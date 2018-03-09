@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Test</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="../dist/modal-backdrop.css">
+    </head>
+    <body>
+      This is a test. See the console.
+      <div id="app">
+        <button @click="open=true">Open set of nested modals</button>
+        <button @click="openProg()">Open programmatically</button>
+        <v-modal-backdrop v-model="open">
+          <p>This is another nested modal.</p>
+          <button @click="open=false">Close Modal</button>
+        </v-modal-backdrop>
+      </div>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <script src="https://unpkg.com/vue@2.5.13/dist/vue.js"></script>
+        <script src="../dist/modal-backdrop.js"></script>
+        <script>
+          console.log('Vue plugin', window.ModalBackdrop.name, window.ModalBackdrop)
+          Vue.use(ModalBackdrop)
+          let Slt = Vue.extend({
+            render (h) {
+              return h('div',
+                [
+                  'this is the slot content of the modal.',
+                  h('strong', {
+                    on: {
+                      click: (e) => {
+                        console.log('zf', this.$parent)
+                        this.$parent.hide()
+                      }
+                    }
+                  }, 'other content')
+                ]
+              )
+            }
+          })
+          new Vue({
+            el    : '#app',
+
+            data: { open: false, m: undefined },
+            methods: {
+              openProg () {
+                this.m = ModalBackdrop.show({parent:this}, "daez", this.$createElement(Slt))
+                window.theModal = this.m
+
+                // setTimeout(() => {
+                //   if (this.m) {
+                //     this.m.hide()
+                //   }
+                // }, 15000);
+              }
+            }
+          })
+        </script>
+    </body>
+</html>

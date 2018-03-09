@@ -3,11 +3,10 @@ const webpack = require('webpack')
 const merge = require('webpack-merge')
 const config = require('../config')
 const utils = require('./utils')
-const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const baseWebpackConfig = require('./webpack.base.conf')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = merge(Object.assign({}, baseWebpackConfig, {
   entry: './src/main.js',
@@ -42,14 +41,6 @@ if (process.env.NODE_ENV === 'production') {
   module.exports.devtool = '#source-map'
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
-    // copy custom static assets
-    new CopyWebpackPlugin([
-      {
-        from: path.resolve(__dirname, '../static'),
-        to: config.build.assetsSubDirectory,
-        ignore: ['.*']
-      }
-    ]),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: '"production"'
@@ -71,10 +62,14 @@ if (process.env.NODE_ENV === 'production') {
         ? { safe: true, map: { inline: false } }
         : { safe: true }
     }),
-    new webpack.optimize.UglifyJsPlugin({
+    new UglifyJsPlugin({
       sourceMap: true,
-      compress: {
-        warnings: false
+      uglifyOptions: {
+        mangle: {
+          // Works around a Safari 10 bug:
+          // https://github.com/mishoo/UglifyJS2/issues/1753
+          safari10: true
+        }
       }
     }),
     new webpack.LoaderOptionsPlugin({
