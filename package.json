@@ -1,7 +1,7 @@
 {
   "name": "v-modal-backdrop",
   "version": "1.0.0",
-  "description": "A generic backdrop component for vue",
+  "description": "A simple generic backdrop component for vue",
   "author": "Honoré Nintunze <nintu.lab@gmail.com>",
   "private": true,
   "main": "dist/modal-backdrop.js",
