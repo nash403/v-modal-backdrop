@@ -1,18 +1,17 @@
 <template>
-  <div :class="[modalClass, 'modal', value ? 'modal-opened' : '']"
+  <div :class="[mdlClass, 'modal', value ? 'modal-opened' : '']"
        tabindex="-1" role="dialog">
     <div
       ref="backdrop"
-      :class="[modalBackdropClass, 'modal-backdrop', value ? 'modal-opened' : '']"
+      :class="[mdlBackdropClass, 'modal-backdrop', value ? 'modal-opened' : '']"
       @click.self="onBackdropClicked">
     </div>
     <transition :name="transition">
       <div
         v-show="value"
         ref="content"
-        :class="[modalContentClass, 'modal-content', value ? 'modal-opened' : '']"
+        :class="[mdlContentClass, 'modal-content', value ? 'modal-opened' : '']"
         style="position: relative;" role="document">
-        <div class="close" @click="onBackdropClicked"></div>
         <slot></slot>
       </div>
     </transition>
@@ -37,7 +36,7 @@
         type   : Boolean,
         default: false
       },
-      backdrop          : {
+      clickOnBackdrop          : {
         type   : Boolean,
         default: true
       },
@@ -49,7 +48,7 @@
         type   : Number,
         default: 150
       },
-      keyboard          : {
+      escKey          : {
         type   : Boolean,
         default: true
       },
@@ -58,9 +57,9 @@
         type   : Number,
         default: 20
       },
-      modalClass        : String,
-      modalContentClass : String,
-      modalBackdropClass: String,
+      mdlClass        : String,
+      mdlContentClass : String,
+      mdlBackdropClass: String,
       embedElement      : {
         type   : null,
         default: 'body'
@@ -76,8 +75,9 @@
         this.$toggle(v)
       }
     },
+    created () {
+    },
     mounted () {
-      console.log('embed element')
       rmNode(this.$el)
       window.addEventListener('keyup', this.onKeyPress, false)
       if (this.value) {
@@ -91,7 +91,7 @@
     },
     methods: {
       onKeyPress (event) {
-        if (this.keyboard && this.value && event.keyCode === 27) {
+        if (this.escKey && this.value && event.keyCode === 27) {
           this.toggle(false)
         }
       },
@@ -140,7 +140,7 @@
         }
       },
       onBackdropClicked (event) {
-        if (this.backdrop) {
+        if (this.clickOnBackdrop) {
           this.toggle(false)
         }
       }

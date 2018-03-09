@@ -47,7 +47,7 @@ module.exports = {
     }],
     "vue/require-default-prop": 1,
     "vue/max-attributes-per-line": [2, {
-      "singleline": 3,
+      "singleline": 2,
       "multiline": {
         "max": 2,
         "allowFirstLine": true

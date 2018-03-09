@@ -1,10 +1,13 @@
 import Vue from 'vue'
-import Demo from 'Demo'
+import App from './App'
+import ModalBackdrop from '../dist/modal-backdrop'
+// import ModalBackdrop from './main'
+
+import '../dist/modal-backdrop.css'
+
+Vue.use(ModalBackdrop)
 
 new Vue({
   el    : '#app',
-  router,
-  store,
-  i18n,
-  render: h => h(Demo)
+  render: h => h(App)
 })
