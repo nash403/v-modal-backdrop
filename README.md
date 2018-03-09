@@ -20,8 +20,32 @@ With a script tag:
 
 Then you have to include basic style for the modal in your html (or write your own):
 
-```html
-<link rel="stylesheet" href="https://unpkg.com/v-modal-backdrop@1.0.0/dist/modal-backdrop.css">
+```css
+.modal {
+  z-index: 1050;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  outline: 0;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.modal-backdrop {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #000;
+  opacity: 0;
+  transition: all 0.15s;
+  &.modal-opened {
+    opacity: 0.4;
+  }
+}
 ```
 
 ## Usage
