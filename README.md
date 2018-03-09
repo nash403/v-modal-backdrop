@@ -14,11 +14,15 @@ With Yarn:
 
 With a script tag:
 
-`<script src="https://unpkg.com/v-modal-backdrop/1.0.0/dist/modal-backdrop.js"></script>`
+```html
+<script src="https://unpkg.com/v-modal-backdrop@1.0.0/dist/modal-backdrop.js"></script>
+```
 
 Then you have to include basic style for the modal in your html (or write your own):
 
-`<link rel="stylesheet" href="https://unpkg.com/v-modal-backdrop/1.0.0/dist/modal-backdrop.css">`
+```html
+<link rel="stylesheet" href="https://unpkg.com/v-modal-backdrop@1.0.0/dist/modal-backdrop.css">
+```
 
 ## Usage
 
