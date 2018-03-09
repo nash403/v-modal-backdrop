@@ -2,7 +2,6 @@ import ModalBackdrop from './ModalBackdrop'
 
 const install = function (Vue, { prefix = 'V' } = {}) {
   Vue.component(`${prefix || ''}ModalBackdrop`, ModalBackdrop)
-  // Vue.prototype.$scrollTo = NavScroll.scrollTo
 }
 
 ModalBackdrop.install = install
