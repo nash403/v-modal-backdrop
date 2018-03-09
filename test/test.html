@@ -52,7 +52,7 @@
             data: { open: false, m: undefined },
             methods: {
               openProg () {
-                this.m = ModalBackdrop.show({parent:this}, "daez", this.$createElement(Slt))
+                this.m = ModalBackdrop.show({parent:this/* , beforeClose: () => {console.log('closing'); return false} */}, "daez", this.$createElement(Slt))
                 window.theModal = this.m
 
                 // setTimeout(() => {

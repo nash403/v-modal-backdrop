@@ -2,8 +2,27 @@
   "name": "v-modal-backdrop",
   "version": "1.0.0",
   "description": "A simple generic backdrop component for vue",
-  "author": "Honoré Nintunze <nintu.lab@gmail.com>",
-  "private": true,
+  "keywords": [
+    "vue",
+    "vue-plugin",
+    "vue-component",
+    "modal",
+    "backdrop"
+  ],
+  "author": {
+    "name": "Honoré Nintunze",
+    "email": "nintu.lab@gmail.com",
+    "url": "https://nintu.me",
+    "twitter": "https://twitter.com/nash_403"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nash403/v-modal-backdrop.git"
+  },
+  "homepage": "https://github.com/nash403/v-modal-backdrop#readme",
+  "bugs": {
+    "url": "https://github.com/nash403/v-modal-backdrop/issues"
+  },
   "main": "dist/modal-backdrop.js",
   "module": "src/main.js",
   "scripts": {

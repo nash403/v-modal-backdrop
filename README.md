@@ -4,15 +4,82 @@
 
 ## Installation
 
-> TODO
+With NPM:
+
+`npm install v-modal-backdrop`
+
+With Yarn:
+
+`yarn add v-modal-backdrop`
+
+With a script tag:
+
+`<script src="https://unpkg.com/v-modal-backdrop/1.0.0/dist/modal-backdrop.js"></script>`
+
+Then you have to include basic style for the modal in your html (or write your own):
+
+`<link rel="stylesheet" href="https://unpkg.com/v-modal-backdrop/1.0.0/dist/modal-backdrop.css">`
 
 ## Usage
 
-> TODO
+Call `Vue.use` to install the ModalBackdrop plugin (it will add a `v-modal-backdrop` component globally) or use it directly.
+
+Then:
+
+```html
+<!-- When someProperty is truthy, the modal will be appended at the end of the body tag (customizable), otherwise the modal will not appear in the DOM -->
+<v-modal-backdrop v-model="someProperty">
+  <!-- Slot contents here -->
+</v-modal-backdrop>
+```
 
 ### Programmatically
 
-> TODO (when feature is implemented)
+```js
+const modal = window.ModalBackdrop.show({
+  // props you want to pass to the modal here.
+  // (`parent:this` === the current context)
+}, ...children)
+// `children` is an array of slots. Each slot is either a string or a VNode (see this.$createElement at https://vuejs.org/v2/api/#render)
+
+// Later
+modal.hide()
+```
+
+## Component props
+
+```js
+{
+  clickOnBackdrop: {
+    type: Boolean,
+    default: true // if true, modal is closed when backdrop is clicked
+  },
+  transition: {
+    type: String,
+    default: '' // transition name for modal content
+  },
+  transitionDuration: {
+    type: Number,
+    default: 150
+  },
+  escKey: {
+    type: Boolean,
+    default: true // if true, hitting esc key closes the modal
+  },
+  beforeClose: {type: Function, default: ()=>{}}, // you can return false to prevent modal from closing
+  zOffset: {
+    type: Number,
+    default: 20 // z-index offset between each nested modal
+  },
+  mdlClass: {type: String, default: ''},
+  mdlContentClass: {type: String, default: ''},
+  mdlBackdropClass: {type: String, default: ''},
+  embedElement: {
+    type: null,
+    default: 'body' // String or HTMLElement
+  }
+}
+```
 
 ## Contributing (running locally)
 

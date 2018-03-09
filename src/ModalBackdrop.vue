@@ -57,14 +57,14 @@ export default {
       type: Boolean,
       default: true
     },
-    beforeClose: Function,
+    beforeClose: {type: Function, default: ()=>{}},
     zOffset: {
       type: Number,
       default: 20
     },
-    mdlClass: String,
-    mdlContentClass: String,
-    mdlBackdropClass: String,
+    mdlClass: {type: String, default: ''},
+    mdlContentClass: {type: String, default: ''},
+    mdlBackdropClass: {type: String, default: ''},
     embedElement: {
       type: null,
       default: 'body'
@@ -105,7 +105,7 @@ export default {
       this.toggle(false, arguments)
     },
     toggle (show, ...rest) {
-      if (!show && typeof this.beforeClose === 'function' && !this.beforeClose(...rest)) {
+      if (!show && typeof this.beforeClose === 'function' && this.beforeClose(...rest) === false) {
         return
       }
       !this.programmatic && this.$emit('input', show) // will trigger the watcher on value (because of v-model)
