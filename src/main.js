@@ -1,10 +1,14 @@
-import Vue from 'vue'
-import App from './App'
+import ModalBackdrop from './ModalBackdrop'
 
-Vue.config.productionTip = false
+const install = function (Vue, { prefix = 'V' } = {}) {
+  Vue.component(`${options && options.prefix || ''}ModalBackdrop`, ModalBackdrop)
+  // Vue.prototype.$scrollTo = NavScroll.scrollTo
+}
 
-/* eslint-disable no-new */
-new Vue({
-  el: '#app',
-  render: h => h(App)
-})
+ModalBackdrop.install = install
+
+if (typeof window !== 'undefined' && window.Vue) {
+  Vue.use(install)
+}
+
+export default ModalBackdrop
