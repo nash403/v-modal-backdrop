@@ -14,9 +14,7 @@
 
 > TODO (when feature is implemented)
 
-## Running this package locally
-
-> TODO
+## Contributing (running locally)
 
 ``` bash
 # clone project
@@ -34,6 +32,7 @@ npm run dev
 # same as above but runs `npm run build` first to build the lib for prod
 npm start
 
+# make your changes and submit a PR
 ```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
