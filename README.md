@@ -42,9 +42,9 @@ Then you have to include basic style for the modal in your html (or write your o
   background-color: #000;
   opacity: 0;
   transition: all 0.15s;
-  &.modal-opened {
-    opacity: 0.4;
-  }
+}
+.modal-backdrop.modal-opened {
+  opacity: 0.4;
 }
 ```
 
