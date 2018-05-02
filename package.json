@@ -24,7 +24,6 @@
     "url": "https://github.com/nash403/v-modal-backdrop/issues"
   },
   "main": "dist/modal-backdrop.js",
-  "module": "src/main.js",
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run build && npm run dev",
