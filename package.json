@@ -1,6 +1,6 @@
 {
   "name": "v-modal-backdrop",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A simple generic backdrop component for vue",
   "keywords": [
     "vue",
